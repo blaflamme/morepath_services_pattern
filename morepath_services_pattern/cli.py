@@ -24,13 +24,14 @@ def initdb():
     click.echo('Initialize database...')
     morepath.autoscan()
     morepath.scan()
-    morepath.commit()
+    App.commit()
     app = App()
+    app.set_implicit()
     # create database
-    dbsession = dbsession_service(app)
+    dbsession = app.service(dbsession_service)
     Base.metadata.create_all(dbsession.bind)
     # add users
-    users = users_service(app)
+    users = app.service(users_service)
     with transaction.manager:
         for user in USERS:
             users.add(**user)
