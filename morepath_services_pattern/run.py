@@ -11,7 +11,7 @@ def run():  # pragma: no cover
 def wsgi_factory():
     morepath.autoscan()
     morepath.scan()
-    morepath.commit()
+    App.commit()
     return App()
 
 
