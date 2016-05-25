@@ -7,10 +7,7 @@ from .generic import (
     dbsession_service,
     users_service
     )
-from .models import(
-    Base,
-    User
-    )
+from .models import Base
 
 
 USERS = [{
