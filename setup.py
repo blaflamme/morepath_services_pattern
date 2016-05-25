@@ -1,7 +1,7 @@
 """
-morepath_services
+morepath_services_pattern
 -----
-Morepath services demo.
+Morepath services pattern demo.
 """
 
 import io
@@ -21,7 +21,6 @@ long_description = '\n'.join((
 install_requires = [
     'morepath',
     'more.transaction',
-    'more.services',
     'zope.sqlalchemy',
     'sqlalchemy',
     'click',
@@ -42,13 +41,13 @@ docs_require = [
 
 
 setup(
-    name='morepath_services',
+    name='morepath_services_pattern',
     version=version,
-    url='https://github.com/blaflamme/morepath_services',
+    url='https://github.com/blaflamme/morepath_services_pattern',
     license='BSD',
     author='Blaise Laflamme',
     author_email='blaise@laflamme.org',
-    description='Morepath services demo.',
+    description='Morepath services pattern demo.',
     long_description=long_description,
     keywords='morepath service services',
     classifiers=[
@@ -75,8 +74,8 @@ setup(
     test_suite='morepath_services',
     entry_points={
         'console_scripts': [
-            'run-demo = morepath_services.run:run',
-            'init-database = morepath_services.cli:initdb'
+            'run-demo = morepath_services_pattern.run:run',
+            'init-database = morepath_services_pattern.cli:initdb'
         ]
     },
     )

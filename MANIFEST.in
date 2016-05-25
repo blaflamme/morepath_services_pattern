@@ -1,4 +1,4 @@
-recursive-include morepath_services *
+recursive-include morepath_services_pattern *
 recursive-include docs *
 include *.txt
 include *.rst
