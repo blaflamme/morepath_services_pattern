@@ -1,5 +1,7 @@
 from .app import App
-from .generic import users_service
+from .generic import (
+    users_service
+    )
 from .models import (
     Root,
     Users,
@@ -8,13 +10,14 @@ from .models import (
 
 
 @App.path(model=Root, path='/')
-def get_root():
+def get_root(request):
     return Root()
 
 
 @App.path(model=Users, path='/users')
 def get_users(request):
-    service = request.app.service(users_service)
+    # service = request.app.service(users_service)
+    service = request.app.find_service('users')
     users = service.all()
     return Users(users)
 

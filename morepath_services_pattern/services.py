@@ -2,9 +2,15 @@ from .app import App
 from .db import get_dbsession
 from .generic import (
     dbsession_service,
-    users_service
+    users_service,
+    service
     )
 from .models import User
+
+
+@App.function(service, name='dbsession')
+def _dbsession_service(app, name):
+    return get_dbsession(app.settings.sqlalchemy.__dict__)
 
 
 @App.function(dbsession_service)
@@ -42,6 +48,12 @@ class UsersService(object):
         self.dbsession.add(user)
         self.dbsession.flush()
         return user
+
+
+@App.function(service, name='users')
+def _users_service(app, name):
+    dbsession = app.find_service('dbsession')
+    return UsersService(dbsession=dbsession)
 
 
 @App.function(users_service)
