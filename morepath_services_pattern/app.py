@@ -1,21 +1,16 @@
-from functools import lru_cache
-from dectate import convert_dotted_name
+from morepath import dispatch_method
 from more.transaction import TransactionApp
-
-from .generic import service
 
 
 class App(TransactionApp):
 
-    @lru_cache()
-    def service(self, func):
-        if isinstance(func, str):
-            func = convert_dotted_name(func)
-        return func(self)
+    @dispatch_method()
+    def dbsession_service(self):
+        raise NotImplementedError
 
-    @lru_cache()
-    def find_service(self, name=''):
-        return service(self, name=name)
+    @dispatch_method()
+    def users_service(self):
+        raise NotImplementedError
 
 
 @App.setting_section(section='sqlalchemy')

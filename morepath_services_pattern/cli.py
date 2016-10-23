@@ -3,10 +3,6 @@ import morepath
 import transaction
 
 from .app import App
-from .generic import (
-    dbsession_service,
-    users_service
-    )
 from .models import Base
 
 
@@ -26,12 +22,11 @@ def initdb():
     morepath.scan()
     App.commit()
     app = App()
-    app.set_implicit()
     # create database
-    dbsession = app.service(dbsession_service)
+    dbsession = app.dbsession_service()
     Base.metadata.create_all(dbsession.bind)
     # add users
-    users = app.service(users_service)
+    users = app.users_service()
     with transaction.manager:
         for user in USERS:
             users.add(**user)

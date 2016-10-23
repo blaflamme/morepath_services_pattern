@@ -1,7 +1,4 @@
 from .app import App
-from .generic import (
-    users_service
-    )
 from .models import (
     Root,
     Users,
@@ -16,8 +13,7 @@ def get_root(request):
 
 @App.path(model=Users, path='/users')
 def get_users(request):
-    # service = request.app.service(users_service)
-    service = request.app.find_service('users')
+    service = request.app.users_service()
     users = service.all()
     return Users(users)
 
@@ -28,5 +24,5 @@ def get_users(request):
     converters={'id': int}
     )
 def get_user(request, id):
-    service = request.app.service(users_service)
+    service = request.app.users_service()
     return service.by_id(id=id)
