@@ -13,7 +13,7 @@ def get_root(request):
 
 @App.path(model=Users, path='/users')
 def get_users(request):
-    service = request.app.users_service()
+    service = request.app.get_users_service()
     users = service.all()
     return Users(users)
 
@@ -24,5 +24,5 @@ def get_users(request):
     converters={'id': int}
     )
 def get_user(request, id):
-    service = request.app.users_service()
+    service = request.app.get_users_service()
     return service.by_id(id=id)

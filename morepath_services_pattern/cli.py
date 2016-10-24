@@ -23,10 +23,10 @@ def initdb():
     App.commit()
     app = App()
     # create database
-    dbsession = app.dbsession_service()
+    dbsession = app.get_dbsession_service()
     Base.metadata.create_all(dbsession.bind)
     # add users
-    users = app.users_service()
+    users = app.get_users_service()
     with transaction.manager:
         for user in USERS:
             users.add(**user)

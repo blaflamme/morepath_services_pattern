@@ -5,11 +5,11 @@ from more.transaction import TransactionApp
 class App(TransactionApp):
 
     @dispatch_method()
-    def dbsession_service(self):
+    def get_dbsession_service(self):
         raise NotImplementedError
 
     @dispatch_method()
-    def users_service(self):
+    def get_users_service(self):
         raise NotImplementedError
 
 
