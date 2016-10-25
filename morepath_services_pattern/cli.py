@@ -26,7 +26,7 @@ def initdb():
     dbsession = app.get_dbsession_service()
     Base.metadata.create_all(dbsession.bind)
     # add users
-    users = app.get_users_service()
+    users = app.get_user_service()
     with transaction.manager:
         for user in USERS:
             users.add(**user)

@@ -9,7 +9,7 @@ class App(TransactionApp):
         raise NotImplementedError
 
     @dispatch_method()
-    def get_users_service(self):
+    def get_user_service(self):
         raise NotImplementedError
 
 

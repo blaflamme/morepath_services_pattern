@@ -40,7 +40,7 @@ class UsersService(object):
         return user
 
 
-@App.method(App.get_users_service)
-def get_users_service(app):
+@App.method(App.get_user_service)
+def get_user_service(app):
     dbsession = app.get_dbsession_service()
     return UsersService(dbsession=dbsession)
