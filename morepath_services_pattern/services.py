@@ -8,7 +8,7 @@ def get_dbsession_service(app):
     return get_dbsession(app.settings.sqlalchemy.__dict__)
 
 
-class UsersService(object):
+class UserService(object):
     def __init__(self, dbsession):
         self.dbsession = dbsession
 
@@ -43,4 +43,4 @@ class UsersService(object):
 @App.method(App.get_user_service)
 def get_user_service(app):
     dbsession = app.get_dbsession_service()
-    return UsersService(dbsession=dbsession)
+    return UserService(dbsession=dbsession)
